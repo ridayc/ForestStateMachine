@@ -1,0 +1,64 @@
+package flib.algorithms.randomforest;
+
+public abstract class DecisionNode implements
+java.io.Serializable {
+	// this is specifiically only for leaf nodes. We need this to determine
+	// the exact location in which data points fall
+	private int leafindex = -1;
+	// this indicates the split path within the tree which a datum has to follow
+	// to get to the current node
+	private int splithistory;
+	
+	// Each leaf in a decision tree has its own specific index
+	// This is important to measure the "distance" between points
+	// according to the tree structure (e.g. for proximities)
+	// Equal to -1 if the current node is not a leaf node
+	private int leafindex = -1;
+	
+	// is the current node a leaf node?
+	public abstract boolean isLeafNode();
+	// for non-leaf nodes determine if the point is on the left or right of the split
+	public abstract boolean evaluateDatum(final double[] datum);
+	
+	public double[] getProbabilities(){
+		return this.probabilities;
+	}
+	
+	public int getLeafIndex(){
+		return this.leafindex;
+	}
+	
+	public int getSplitHistory(){
+		return this.splithistory;
+	}
+	
+	public int[] getPoints(){
+		return this.points;
+	}
+	
+	public double getWeight(){
+		return this.weight;
+	}
+	
+	// setter functions
+	
+	public void setLeaf(final double[] probabilities){
+		this. probabilities = probabilities.clone();
+	}
+	
+	public void setLeafIndex(int leafindex){
+		this.leafindex = leafindex;
+	}
+	
+	public void setSplitHistory(int splithistory){
+		this.splithistory = splithistory;
+	}
+	
+	public void setPoints(final int[] points){
+		this.points = points.clone();
+	}
+	
+	public void setWeight(double weight){
+		this.weight = weight;
+	}
+}
