@@ -8,8 +8,6 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import flib.math.RankSort;
 import flib.math.SortPair2;
-import flib.math.random.Shuffle;
-import flib.math.random.Shuffler;
 import flib.algorithms.randomforest.TreeNode;
 import flib.algorithms.randomforest.DecisionNode;
 import flib.algorithms.randomforest.splitfunctions.SplitFunction;
@@ -35,7 +33,7 @@ java.io.Serializable {
 	splitpurity: a third measure related to maxdepth and maxleafsize. This variable gives the percentage of for alls labels which a leaf node has to contain
 	of that label to require no further splitting.
 	*/
-	public void generateTree(final int[] points, final double[][] trainingset, final double[] labels, final double[] weights, final boolean[] categorical, final Shuffler dimweights, final double[] parameters, final double[] splitpurity, final SplitFunction G){
+	public void generateTree(final int[] points, final double[][] trainingset, final double[] labels, final double[] weights, final boolean[] categorical, final SplitFunction G){
 		// initiate the root node
 		myTree = new TreeNode<DecisionNode>();
 		// prepare some temporary variables
