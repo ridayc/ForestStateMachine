@@ -13,7 +13,6 @@ import flib.math.SortPair2;
 import flib.math.VectorFun;
 import flib.math.RankSort;
 import flib.math.random.Shuffle;
-import flib.math.random.Sample;
 import flib.algorithms.randomforest.DecisionTree;
 import flib.algorithms.randomforest.splitfunctions.SplitFunction;
 
@@ -139,13 +138,13 @@ java.io.Serializable {
 	private int[] generateDecisionTree(RandomForest RF, DecisionTree DT){
 		int n = RF.getTrainingset().length;
 		int nt = (int)(n*(1.-resample));
-		int[] randind = Shuffle.randPerm(n);
+		int[] randind = Shuffle.randPerm(n,rng);
 		int[] points = new int[nt];
 		for (int j=0; j<nt; j++){
 			points[j] = randind[j];
 		}
 		int[] samples = randind.clone();
-		DT.generateTree(points, RF.getTrainingset(), RF.getLabels(), RF.getWeights(), RF.getCategorical(), RF.getDimWeights(), RF.getParameters(), RF.getSplitPurity(), RF.getSplitFunction());
+		DT.generateTree(points, RF.getTrainingset(), RF.getLabels(), RF.getWeights(), RF.getCategorical(), RF.getSplitFunction());
 		return samples;
 	}
 	

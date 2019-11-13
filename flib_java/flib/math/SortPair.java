@@ -1,5 +1,8 @@
 package flib.math;
 
+// this function creates a key value pair for sorting purposes. 
+// if the values of to SortPairs are equal, the key determines the ordering of Pairs
+
 public class SortPair implements Comparable<SortPair>,  java.io.Serializable{
 	private double originalIndex;
 	private double value;
